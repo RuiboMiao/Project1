@@ -1,0 +1,12 @@
+<a [routerLink]="[checkLoggedIn() ? '/main' : '/login']">
+  <h1>My Store</h1>
+</a>
+
+<div class="menu">
+	<!-- if loggedin display cart, else hide -->
+	<a *ngIf="checkLoggedIn()" [routerLink]="['/cart']" class="button fancy-button"><i class="material-icons">shopping_cart</i></a>
+	<a *ngIf="checkLoggedIn()" [routerLink]="['/settings']" class="button fancy-button"><i class="material-icons">settings</i></a>
+	<!-- if loggedin display logout, else display login -->
+	<a *ngIf="checkLoggedIn()" [routerLink]="['/logout']" class="button fancy-button"><i class="material-icons">logout</i></a>
+	<a *ngIf="!checkLoggedIn()" [routerLink]="['/login']" class="button fancy-button"><i class="material-icons">login</i></a>
+</div>

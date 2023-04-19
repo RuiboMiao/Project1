@@ -1,0 +1,26 @@
+<h2>Products</h2>
+
+<div *ngIf="addedToCart" class="alert alert-success mt-3">
+  Product added to cart!
+</div>
+  
+<section class='products' >
+
+  <div *ngFor="let product of products; index as productId">
+
+    <h3>
+      <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+        {{ product.name }}
+      </a>
+    </h3>
+
+    <p *ngIf="product.description">
+      {{ product.description }}
+    </p>
+
+    <button (click)="addToCart(productId)">
+      Add To Cart
+    </button>
+
+  </div>
+</section>

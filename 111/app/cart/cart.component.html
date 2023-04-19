@@ -1,0 +1,57 @@
+<h2>Shopping Cart</h2>
+<div *ngIf="items.length === 0">No items in cart</div>
+
+<div *ngIf="items.length > 0" class="container">
+  <div class='cart'>
+    <div class='cart-item' *ngFor="let item of items; index as itemId">
+      <h2>{{ item.product.name }}</h2>
+      <p>Price: ${{ item.product.price }}</p>
+      <p>Sub total: ${{ item.quantity * item.product.price }}</p>
+      <label>Quantity:</label>
+      <input type="number" [(ngModel)]="item.quantity" min="1" [disabled]="isDisabled">
+      <button (click)="removeItem(itemId)" [disabled]="isDisabled">Remove</button>
+    </div>
+  </div>
+
+  <form>
+    <h2>Payment Details</h2>
+    <div *ngIf="hasError" class="text-danger">
+      {{ errorMessage }}
+    </div>
+    <div *ngIf="!hasError">
+      <br>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="card-holder-name">Card Holder Name *:</label>
+      <input type="text" class="form-control" id="card-holder-name" name='cardHolderName' [(ngModel)]="cardHolderName" [disabled]="isDisabled">
+      <div *ngIf="!cardHolderName && isSubmitted" class="text-danger">Card Holder Name is required</div>
+    </div>
+    <div class="form-group">
+      <label for="card-number">Card Number *:</label>
+      <input type="text" class="form-control" id="card-number" name='cardNumber' [(ngModel)]="cardNumber" [disabled]="isDisabled">
+      <div *ngIf="!cardNumber && isSubmitted" class="text-danger">Card Number is required</div>
+    </div>
+    <div class="form-group">
+      <label for="expiry-date">Expiry Date *:</label>
+      <input type="text" class="form-control" id="expiry-date" name='expiryDate' [(ngModel)]="expiryDate" [disabled]="isDisabled">
+      <div *ngIf="!expiryDate && isSubmitted" class="text-danger">Expiry Date is required</div>
+    </div>
+    <div class="form-group">
+      <label for="cvv">CVV *:</label>
+      <input type="text" class="form-control" id="cvv" name='cvv' [(ngModel)]="cvv" [disabled]="isDisabled">
+      <div *ngIf="!cvv && isSubmitted" class="text-danger">CVV is required</div>
+    </div>
+    <div class="form-group">
+      <label for="address">address *:</label>
+      <input type="text" class="form-control" id="address" name='address' [(ngModel)]="address" [disabled]="isDisabled">
+      <div *ngIf="!address && isSubmitted" class="text-danger">Address is required</div>
+    </div>
+    <button type="button" class="btn btn-primary" [disabled]="isSubmitted" (click)="pay()">Finalize Payment</button>
+  </form>
+  <div *ngIf="isSubmitted && !hasError" class="confirmation">
+    <h3>The Order is Confirmed</h3>
+    <p>Thank you for shopping with us!</p>
+    <p><a [routerLink]="['/main']" class="button fancy-button"><i class="material-icons">home</i>Home Page</a></p>
+  </div>
+</div>

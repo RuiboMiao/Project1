@@ -1,0 +1,7 @@
+<h1>Account Settings</h1>
+
+<label for="nickname">Nickname:</label>
+<div *ngIf="isUpdated">Your new nickname is updated!</div>
+<input type="text" id="nickname" [(ngModel)]="nickname">
+
+<button (click)="saveNickname()">Update</button>

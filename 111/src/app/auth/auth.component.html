@@ -1,0 +1,13 @@
+<h1>Welcome! Please Login!</h1>
+<div *ngIf="errorMessage" style="color: red">{{ errorMessage }}</div>
+<form (ngSubmit)="onSubmit()">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" [(ngModel)]="username">
+  </div>
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" [(ngModel)]="password">
+  </div>
+  <button class="button fancy-button-reverse" type="submit"><i class="material-icons">login</i>Login</button>
+</form>

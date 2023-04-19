@@ -1,0 +1,10 @@
+<h1>
+	Welcome to Shopping Mall<br/>
+	You are logged in as username: {{username}} <span *ngIf="nickname.length > 0"><br/>Nickname: {{nickname}}</span>
+</h1>
+<ul class="list">
+	<li><a class="button fancy-button-reverse" [routerLink]="['/settings']"><i class="material-icons">settings</i>Settings</a></li>
+	<li><a class="button fancy-button-reverse" [routerLink]="['/info']"><i class="material-icons">list_alt</i>View Products</a></li>
+	<li><a class="button fancy-button-reverse" [routerLink]="['/cart']"><i class="material-icons">shopping_cart</i>Cart</a></li>
+	<li><a class="button fancy-button-reverse" [routerLink]="['/logout']"><i class="material-icons">logout</i>Logout</a></li>
+</ul>
